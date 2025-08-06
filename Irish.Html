@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irish Busaco - Curriculum Vitae</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #090A0F; /* Solid dark background */
+            color: #E0E0E0; /* Light grey text for general readability */
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top */
+            min-height: 100vh; /* Ensure it takes full viewport height */
+            padding: 2rem; /* Add padding around the whole CV */
+        }
+        .cv-container {
+            max-width: 960px; /* Wider container for two columns */
+            width: 100%;
+            background-color: rgba(26, 26, 26, 0.9); /* Dark grey with slight transparency */
+            border-radius: 16px; /* More rounded corners */
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); /* Stronger, more "3D" shadow */
+            border: 1px solid #333333; /* Dark grey border */
+            display: flex;
+            flex-direction: column; /* Default to column on small screens */
+            overflow: hidden; /* Ensures rounded corners are respected */
+        }
+        @media (min-width: 768px) { /* Medium screens and up for two columns */
+            .cv-container {
+                flex-direction: column; /* Keep column for main container */
+            }
+        }
+        h1 {
+            font-size: 2.8rem; /* Larger name */
+            font-weight: 700;
+            color: #00CC99; /* Bright teal for main name */
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-size: 1.85rem; /* Larger section titles */
+            font-weight: 600;
+            color: #00A388; /* Slightly darker teal for section titles */
+            border-bottom: 2px solid #444444; /* Darker grey border for sections */
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        h3 {
+            font-size: 1.35rem; /* Subheading size */
+            font-weight: 600;
+            color: #00CC99; /* Bright teal for subheadings (matches h1) */
+            margin-bottom: 0.25rem;
+        }
+        p {
+            margin-bottom: 1rem;
+            color: #E0E0E0; /* Light grey for general text */
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: #E0E0E0; /* Light grey for list items */
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .contact-info a {
+            color: #00A388; /* Slightly darker teal for links */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+        .contact-info a:hover {
+            color: #00CC99; /* Bright teal on hover */
+        }
+        .section-block {
+            background-color: rgba(34, 34, 34, 0.9); /* Darker grey for blocks with transparency */
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle inner shadow for blocks */
+            border: 1px solid #3A3A3A; /* Dark grey border for blocks */
+        }
+        .header-section {
+            background-color: rgba(40, 40, 40, 0.9); /* Base dark grey for header with transparency */
+            /* Enhanced cosmic dust effect */
+            background-image:
+                radial-gradient(circle at 15% 25%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                radial-gradient(circle at 85% 75%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                radial-gradient(circle at 30% 60%, rgba(255,255,255,0.04) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255,255,255,0.04) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 40%);
+            background-size: 250px 250px, 200px 200px, 180px 180px, 160px 160px, 100px 100px; /* Varying sizes */
+            background-position: 10% 20%, 90% 80%, 40% 10%, 60% 90%, 50% 50%; /* Scattered positions */
+            background-blend-mode: overlay; /* Blends the gradients nicely */
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid #444444; /* Darker grey separator */
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+        .main-content-columns {
+            display: flex;
+            flex-direction: column; /* Default to column on small screens */
+        }
+        @media (min-width: 768px) {
+            .main-content-columns {
+                flex-direction: row;
+            }
+        }
+        .left-column {
+            flex: 1;
+            padding: 2rem;
+            background-color: rgba(40, 40, 40, 0.9); /* Slightly lighter dark grey for left column with transparency */
+            border-right: 1px solid #444444; /* Darker grey separator */
+        }
+        .right-column {
+            flex: 2; /* Right column takes more space */
+            padding: 2rem;
+            background-color: rgba(26, 26, 26, 0.9); /* Same as container for right column with transparency */
+        }
+        @media (max-width: 767px) {
+            .left-column {
+                border-right: none;
+                border-bottom: 1px solid #444444;
+            }
+        }
+        .profile-pic-container { /* New container for the image to apply border/shadow */
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Ensures image stays within circle */
+            border: 4px solid #00CC99; /* Bright teal border for depth */
+            box-shadow: 0 3px 8px rgba(0,0,0,0.4); /* Stronger shadow for depth */
+        }
+        .profile-pic-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image covers the circle without distortion */
+            display: block; /* Removes extra space below image */
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Centralized Header Section -->
+        <div class="header-section">
+            <div class="profile-pic-container">
+                <img src="https://i.imgur.com/hf67P4G.png" alt="Irish Busaco Profile Picture">
+            </div>
+            <header class="mb-6">
+                <h1>Irish Busaco</h1>
+                <p class="text-lg text-white">Customer Service Representative</p>
+            </header>
+            <div class="contact-info text-md text-gray-400">
+                <p class="mb-1">
+                    <strong>Email:</strong> <a href="mailto:irishbusacoirish@gmail.com" class="hover:underline">irishbusacoirish@gmail.com</a> |
+                    <strong>Phone:</strong> +639661535404
+                </p>
+                <p>
+                    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/irish-customerservicespecialist/" target="_blank" class="hover:underline">Irish Busaco</a> |
+                    <strong>Portfolio:</strong> <a href="https://yourportfolio.com/IrishPortfolio" target="_blank" class="hover:underline">Irish Portfolio</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Main Content Columns -->
+        <div class="main-content-columns">
+            <!-- Left Column: Summary, Skills, Education -->
+            <div class="left-column">
+                <!-- Summary Section -->
+                <div class="section-block">
+                    <h2>Summary</h2>
+                    <p class="text-gray-300">
+                        Experienced professional with 5 years in administrative support, customer service, and digital marketing. Excels at streamlining operations, boosting customer satisfaction, and generating new leads through social media and email campaigns. Ready to deliver strong results for your team.
+                    </p>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="section-block">
+                    <h2>Skills & Expertise</h2>
+                    <div class="text-gray-300">
+                        <h3 class="text-base font-semibold text-white mb-2">Administrative & Office Tasks:</h3>
+                        <ul class="list-disc ml-6 mb-4">
+                            <li>Office Management</li>
+                            <li>Data Management</li>
+                            <li>Scheduling & Coordination</li>
+                            <li>Effective Communication</li>
+                            <li>Microsoft Office Suite</li>
+                            <li>Google Workspace</li>
+                        </ul>
+                    </div>
+                    <div class="text-gray-300">
+                        <h3 class="text-base font-semibold text-white mb-2">Customer & Client Relations:</h3>
+                        <ul class="list-disc ml-6 mb-4">
+                            <li>Customer Relationship Management (CRM)</li>
+                            <li>Problem Solving</li>
+                            <li>Customer Support</li>
+                            <li>Client Retention</li>
+                            <li>Active Listening</li>
+                        </ul>
+                    </div>
+                    <div class="text-gray-300">
+                        <h3 class="text-base font-semibold text-white mb-2">Digital Marketing & Sales:</h3>
+                        <ul class="list-disc ml-6">
+                            <li>Lead Generation</li>
+                            <li>Social Media Management</li>
+                            <li>Content Creation</li>
+                            <li>Email Automation</li>
+                            <li>Campaign Optimization</li>
+                            <li>Performance Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="section-block">
+                    <h2>Education</h2>
+                    <p class="text-gray-300 mb-2"><strong>Bachelor of Science in Business Management</strong></p>
+                    <p class="text-gray-400"><em>University of Bohol</em></p>
+                    <p class="text-gray-400"><em>Batch 2020-2024</em></p>
+                </div>
+            </div>
+
+            <!-- Right Column: Experience -->
+            <div class="right-column">
+                <div class="section-block">
+                    <h2>Experience</h2>
+
+                    <div class="mb-6">
+                        <h3>Lead Generation, Social Media, & Cold Email Automation Specialist</h3>
+                        <p class="text-gray-400"><em>Buink | (1.5 years experience)</em></p>
+                        <ul class="list-disc ml-6 text-gray-300">
+                            <li>Developed and ran lead generation plans.</li>
+                            <li>Managed social media to increase brand reach.</li>
+                            <li>Set up automated email campaigns for new leads.</li>
+                            <li>Analyzed data to improve campaign results.</li>
+                            <li>Used tools to track leads and customer interest.</li>
+                            <li>Wrote clear and effective messages for emails and social media.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6">
+                        <h3>Customer Services Representative</h3>
+                        <p class="text-gray-400"><em>Golf Premium | (1.5 years experience)</em></p>
+                        <ul class="list-disc ml-6 text-gray-300">
+                            <li>Resolved customer issues quickly and kindly.</li>
+                            <li>Maintained strong customer relationships.</li>
+                            <li>Used CRM systems to manage customer information.</li>
+                            <li>Provided accurate information and calmed difficult situations.</li>
+                            <li>Handled customer inquiries via phone, email, and chat.</li>
+                            <li>Ensured high customer satisfaction through effective support.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6">
+                        <h3>Administrative Staff</h3>
+                        <p class="text-gray-400"><em>Prism | (2 years experience)</em></p>
+                        <ul class="list-disc ml-6 text-gray-300">
+                            <li>Managed daily office tasks efficiently.</li>
+                            <li>Organized and maintained important documents.</li>
+                            <li>Scheduled appointments and meetings.</li>
+                            <li>Provided general administrative support.</li>
+                            <li>Managed office supplies and equipment.</li>
+                            <li>Assisted teams with various operational needs.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6">
+                        <h3>Cashier</h3>
+                        <p class="text-gray-400"><em>7/11 | (6 months experience)</em></p>
+                        <ul class="list-disc ml-6 text-gray-300">
+                            <li>Processed sales transactions accurately.</li>
+                            <li>Assisted customers with purchases and inquiries.</li>
+                            <li>Maintained a clean and organized checkout area.</li>
+                            <li>Managed product displays and inventory.</li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-6">
+                        <h3>Virtual Assistant</h3>
+                        <p class="text-gray-400"><em>Webookyousale | (3 months experience)</em></p>
+                        <ul class="list-disc ml-6 text-gray-300">
+                            <li>Provided remote administrative support.</li>
+                            <li>Managed schedules and appointments.</li>
+                            <li>Handled email correspondence and communications.</li>
+                            <li>Organized digital files and documents.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+        </html>
